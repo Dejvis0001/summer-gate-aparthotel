@@ -1,49 +1,69 @@
 //Moving Animation
-const observer = new IntersectionObserver((entries) => {
+const elements = document.querySelectorAll(".fadeinleft");
+const elements1 = document.querySelectorAll(".fade-in");
+const elements2 = document.querySelectorAll(".fadeinright");
+const elements3 = document.querySelectorAll(".fadeindown");
+const elements4 = document.querySelectorAll(".fadeinup");
+const options = {
+  root: null,
+  rootMargin: "0px",
+  threshold: 0.4,
+};
+const callbacks = (entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
-      entry.target.classList.add("show");
+      entry.target.classList.add("active-left");
     }
   });
-});
-const hiddenElements = document.querySelectorAll(".hidden");
-hiddenElements.forEach((el) => observer.observe(el));
-const observer2 = new IntersectionObserver((entries2) => {
-  entries2.forEach((entry2) => {
-    if (entry2.isIntersecting) {
-      entry2.target.classList.add("show2");
+};
+const callbacks1 = (entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("active");
     }
   });
-});
-const hiddenElements2 = document.querySelectorAll(".hidden2");
-hiddenElements2.forEach((el2) => observer2.observe(el2));
-const observer3 = new IntersectionObserver((entries3) => {
-  entries3.forEach((entry3) => {
-    if (entry3.isIntersecting) {
-      entry3.target.classList.add("show3");
+};
+const callbacks2 = (entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("active-right");
     }
   });
-});
-const hiddenElements3 = document.querySelectorAll(".hidden3");
-hiddenElements3.forEach((el3) => observer3.observe(el3));
-const observer4 = new IntersectionObserver((entries4) => {
-  entries4.forEach((entry4) => {
-    if (entry4.isIntersecting) {
-      entry4.target.classList.add("show4");
+};
+const callbacks3 = (entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("active-down");
     }
   });
-});
-const hiddenElements4 = document.querySelectorAll(".hidden4");
-hiddenElements4.forEach((el4) => observer4.observe(el4));
-const observer5 = new IntersectionObserver((entries5) => {
-  entries5.forEach((entry5) => {
-    if (entry5.isIntersecting) {
-      entry5.target.classList.add("show5");
+};
+const callbacks4 = (entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("active-up");
     }
   });
+};
+let observer = new IntersectionObserver(callbacks, options);
+let observer1 = new IntersectionObserver(callbacks1, options);
+let observer2 = new IntersectionObserver(callbacks2, options);
+let observer3 = new IntersectionObserver(callbacks3, options);
+let observer4 = new IntersectionObserver(callbacks4, options);
+elements.forEach((elements) => {
+  observer.observe(elements);
 });
-const hiddenElements5 = document.querySelectorAll(".hidden5");
-hiddenElements5.forEach((el5) => observer5.observe(el5));
+elements1.forEach((elements1) => {
+  observer1.observe(elements1);
+});
+elements2.forEach((elements2) => {
+  observer2.observe(elements2);
+});
+elements3.forEach((elements3) => {
+  observer3.observe(elements3);
+});
+elements4.forEach((elements4) => {
+  observer4.observe(elements4);
+});
 //Index-Home
 document.addEventListener("DOMContentLoaded", function () {
   var swiper = new Swiper(".home-slider", {
@@ -235,4 +255,3 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
-
